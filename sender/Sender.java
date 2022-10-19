@@ -14,7 +14,7 @@ public class Sender {
         battery.setSoc(socSensor.getStateOfCharge());
         battery.setTemp(tempSensor.getTemperature());
         
-        System.out.println(battery.toString());
+        System.out.println("soc="+battery.getSoc()+",temp="+battery.getTemp());
 
         return battery;
 	}

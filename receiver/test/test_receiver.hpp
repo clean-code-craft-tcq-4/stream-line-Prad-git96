@@ -1,7 +1,7 @@
 #include <assert.h>
-#include "include/receiver/receiver.hpp"
+#include "receiver.hpp"
 
-int main()
+void test_receiver()
 {
     Receiver soc_receiver;
     Receiver temperature_receiver;

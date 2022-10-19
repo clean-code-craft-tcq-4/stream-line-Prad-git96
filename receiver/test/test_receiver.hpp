@@ -1,15 +1,15 @@
 #include <assert.h>
-#include "receiver.hpp"
+#include "statistics_handler.hpp"
 
 void test_receiver()
 {
-    Receiver soc_receiver;
-    Receiver temperature_receiver;
+    StatisticsHandler soc_handler;
+    StatisticsHandler temperature_handler;
 
-    assert(soc_receiver.minValue());
-    assert(soc_receiver.maxValue());
-    assert(soc_receiver.movingAverageValue());
-    assert(temperature_receiver.minValue());
-    assert(temperature_receiver.maxValue());
-    assert(temperature_receiver.movingAverageValue());
+    assert(soc_handler.minValue());
+    assert(soc_handler.maxValue());
+    assert(soc_handler.movingAverageValue());
+    assert(temperature_handler.minValue());
+    assert(temperature_handler.maxValue());
+    assert(temperature_handler.movingAverageValue());
 }

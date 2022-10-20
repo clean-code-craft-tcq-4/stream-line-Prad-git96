@@ -1,15 +1,14 @@
 #include <assert.h>
 #include "statistics_handler.hpp"
-
+#include <iostream>
 void test_receiver()
 {
     StatisticsHandler soc_handler;
-    StatisticsHandler temperature_handler;
 
-    assert(soc_handler.minValue());
-    assert(soc_handler.maxValue());
-    assert(soc_handler.movingAverageValue());
-    assert(temperature_handler.minValue());
-    assert(temperature_handler.maxValue());
-    assert(temperature_handler.movingAverageValue());
+    soc_handler.setConsoleData(std::vector<int>{1, 5, 6, 2, 4, 3, 7});
+    std::cout << soc_handler.movingAverageValue();
+
+    assert(soc_handler.minValue() == 1);
+    assert(soc_handler.maxValue() == 7);
+    assert(soc_handler.movingAverageValue() == 22/5.);
 }

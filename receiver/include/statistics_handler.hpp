@@ -5,7 +5,8 @@ class StatisticsHandler
 public:
     int minValue();
     int maxValue();
-    int movingAverageValue();
+    double movingAverageValue();
+    void setConsoleData(std::vector<int> input_data);
 
 private:
     std::vector<int> console_data;

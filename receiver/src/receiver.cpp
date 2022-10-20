@@ -1,36 +1,25 @@
 #include <vector>
+#include <map>
 #include <iostream>
 #include <string>
 #include "../test/test_receiver.hpp"
-
-#include <algorithm>
-// #include "statistics_handler.hpp"
-
-std::vector<std::string> readConsole()
-{
-    std::cout << "Waiting for input\n";
-    std::string input_stream;
-    std::vector<std::string> received_data;
-    std::string delimiter = ",";
-    while (std::getline(std::cin, input_stream))
-    {
-        received_data.push_back(input_stream.substr(0, input_stream.find(delimiter)));
-        std::cout << "Received line: " << input_stream << std::endl;
-    }
-
-    return received_data;
-}
-
-void extractSensorData(std::vector<std::string> input)
-{
-    std::vector<StatisticsHandler> sensor_data;
-}
+#include "console_reader.hpp"
 
 int main()
 {
     std::vector<std::string> console_input{readConsole()};
-    for(auto it : console_input)
+    std::map<int, std::vector<int>> sensor_data = extractSensorData(console_input);
+
+    for(auto it : sensor_data)
     {
-        std::cout << it << std::endl;
+        StatisticsHandler sensor;
+        sensor.setConsoleData(it.second);
+        std::cout << "For sensor " << it.first << std::endl;
+        std::cout << "Maximum value: " << sensor.maxValue() << std::endl;
+        std::cout << "Minimum value: " << sensor.minValue() << std::endl;
+        std::cout << "Moving average of last five values: " << sensor.movingAverageValue() << std::endl;
+        std::cout << "\n";
     }
+
+    test_receiver();
 }

@@ -2,6 +2,23 @@
 
 This project is about sending and receiving BMS data.
 
+## Guidelines to build and run the program
+
+### Build instructions
+To build the sender from terminal,
+
+`cd sender`
+`javac Sender.java`
+
+To build the receiver from terminal,
+
+`g++ -o testsender sender/src/*.cpp* sender/test/*.hpp* -I sender/include/`
+
+### Run instructions
+To run sender to generate sensor data and receiver to read & compute statistics from terminal
+`cd sender`
+`java -ea Sender | ./../testreceiver`
+
 ## Decomposition
 
 At a top level, the program runs in two processes - the sender and the receiver.

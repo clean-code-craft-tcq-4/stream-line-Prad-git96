@@ -19,7 +19,7 @@ std::vector<std::string> readConsole()
     return received_data;
 }
 
-std::map<int, std::vector<int>> extractSensorData(std::vector<std::string> input)
+std::vector<std::string> extractSensorData(std::vector<std::string> input)
 {
     std::vector<std::string> combined_sensor_data;
     for (auto it : input)
@@ -32,17 +32,17 @@ std::map<int, std::vector<int>> extractSensorData(std::vector<std::string> input
         }
     }
 
-    int sensor_count = combined_sensor_data.size() / input.size();
-    std::map<int, std::vector<int>>sensors;
+    return combined_sensor_data;
+}
 
-    for (int i = 0; i < combined_sensor_data.size() - 1; i += sensor_count)
+std::map<int, std::vector<int>> splitData(std::vector<std::string> combined_sensor_data)
+{
+    std::map<int, std::vector<int>> sensors;
+
+    for (int i = 0; i < combined_sensor_data.size() - 1; i += 2)
     {
-        int sensor_index = 0;
-        while (sensor_index < sensor_count)
-        {
-            sensors[sensor_index].push_back(std::stoi(combined_sensor_data[i + sensor_index]));
-            sensor_index++;
-        }
+        sensors[0].push_back(std::stoi(combined_sensor_data[i]));
+        sensors[1].push_back(std::stoi(combined_sensor_data[i + 1]));
     }
 
     return sensors;

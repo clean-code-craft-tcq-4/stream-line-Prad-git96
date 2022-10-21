@@ -8,7 +8,7 @@
 int main()
 {
     std::vector<std::string> console_input{readConsole()};
-    std::map<int, std::vector<int>> sensor_data = extractSensorData(console_input);
+    std::map<int, std::vector<int>> sensor_data = splitData(extractSensorData(console_input));
 
     for(auto it : sensor_data)
     {

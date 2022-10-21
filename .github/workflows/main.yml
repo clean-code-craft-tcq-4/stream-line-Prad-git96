@@ -13,8 +13,10 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Normal Run
+    - name: build sender
       run: |
         cd sender
         javac Sender.java
         java -ea Sender
+    - name: build receiver
+      run: g++ -o testreceiver receiver/src/*cpp* receiver/test/*hpp* -I receiver/include/
